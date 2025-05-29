@@ -1,0 +1,320 @@
+import React from 'react';
+import { StyleSheet, View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
+
+export default function App() {
+  return (
+    <ScrollView style={styles.container}>
+      {/* Navigation */}
+      <View style={styles.nav}>
+        <Text style={styles.title}>ELITE <Text style={styles.highlight}>SPORTWEAR</Text></Text>
+        <View style={styles.navLinks}>
+          {['Home', 'Products', 'Brands', 'Sale', 'About'].map((link) => (
+            <TouchableOpacity key={link}>
+              <Text style={styles.navLink}>{link}</Text>
+            </TouchableOpacity>
+          ))}
+        </View>
+      </View>
+
+      {/* Hero Section */}
+      <View style={styles.hero}>
+        <View style={styles.heroText}>
+          <Text style={styles.heroTitle}>ELITE PERFORMANCE <Text style={styles.heroHighlight}>GEAR</Text></Text>
+          <Text style={styles.heroDescription}>Direct from manufacturers to your doorstep. Premium quality at wholesale prices.</Text>
+          <View style={styles.heroButtons}>
+            <TouchableOpacity style={styles.shopButton}>
+              <Text style={styles.buttonText}>Shop Now</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.exploreButton}>
+              <Text style={styles.buttonText}>Explore</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+        <Image
+          source={{ uri: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80' }}
+          style={styles.heroImage}
+        />
+      </View>
+
+      {/* Sports Categories */}
+      <View style={styles.categories}>
+        <Text style={styles.categoriesTitle}>SHOP BY <Text style={styles.highlight}>SPORT</Text></Text>
+        <View style={styles.categoryGrid}>
+          {['Basketball', 'Football', 'Soccer', 'F1 Racing', 'Hockey', 'Volleyball', 'Training'].map((sport) => (
+            <View key={sport} style={styles.categoryItem}>
+              <Text style={styles.categoryIcon}>{getSportIcon(sport)}</Text>
+              <Text style={styles.categoryName}>{sport}</Text>
+            </View>
+          ))}
+        </View>
+      </View>
+
+      {/* Featured Products */}
+      <View style={styles.featuredProducts}>
+        <Text style={styles.featuredTitle}>FEATURED <Text style={styles.highlight}>PRODUCTS</Text></Text>
+        <View style={styles.productGrid}>
+          {/* Product 1 */}
+          <ProductCard
+            imageUri="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            title="Elite Basketball Jersey"
+            description="Official NBA Style"
+            price="$59.99"
+            oldPrice="$79.99"
+            rating={4.5}
+            saleBadge="SALE"
+          />
+          {/* Product 2 */}
+          <ProductCard
+            imageUri="https://images.unsplash.com/photo-1521193089946-7aa29d1fe776?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            title="Pro Football Jersey"
+            description="NFL Team Edition"
+            price="$64.99"
+            rating={4}
+          />
+          {/* Product 3 */}
+          <ProductCard
+            imageUri="https://images.unsplash.com/photo-1574629810360-7efbbe195018?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            title="Champion Soccer Kit"
+            description="World Cup Edition"
+            price="$49.99"
+            oldPrice="$69.99"
+            rating={5}
+            saleBadge="-30%"
+          />
+          {/* Product 4 */}
+          <ProductCard
+            imageUri="https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            title="Pro Hockey Jersey"
+            description="NHL Authentic"
+            price="$69.99"
+            rating={4.5}
+          />
+        </View>
+      </View>
+
+      {/* Sale Banner */}
+      <View style={styles.saleBanner}>
+        <Text style={styles.saleTitle}>SUMMER <Text style={styles.saleHighlight}>SALE</Text></Text>
+        <Text style={styles.saleDescription}>Up to 50% off on selected items. Limited time only!</Text>
+      </View>
+    </ScrollView>
+  );
+}
+
+const getSportIcon = (sport) => {
+  const icons = {
+    Basketball: '🏀',
+    Football: '🏈',
+    Soccer: '⚽',
+    'F1 Racing': '🏎️',
+    Hockey: '🏒',
+    Volleyball: '🏐',
+    Training: '👕',
+  };
+  return icons[sport] || '⚽';
+};
+
+const ProductCard = ({ imageUri, title, description, price, oldPrice, rating, saleBadge }) => (
+  <View style={styles.productCard}>
+    <Image source={{ uri: imageUri }} style={styles.productImage} />
+    {saleBadge && <Text style={styles.saleBadge}>{saleBadge}</Text>}
+    <Text style={styles.productTitle}>{title}</Text>
+    <Text style={styles.productDescription}>{description}</Text>
+    <View style={styles.productFooter}>
+      <View>
+        <Text style={styles.productPrice}>{price}</Text>
+        {oldPrice && <Text style={styles.oldPrice}>{oldPrice}</Text>}
+      </View>
+      <View style={styles.rating}>
+        {Array.from({ length: 5 }, (_, index) => (
+          <Text key={index} style={styles.star}>{index < Math.floor(rating) ? '⭐' : '☆'}</Text>
+        ))}
+      </View>
+    </View>
+  </View>
+);
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#f8f9fa',
+  },
+  nav: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: 16,
+    backgroundColor: '#fff',
+    elevation: 4,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+  },
+  highlight: {
+    color: '#3a86ff',
+  },
+  navLinks: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  navLink: {
+    marginHorizontal: 10,
+    color: '#3a86ff',
+  },
+  hero: {
+    flexDirection: 'row',
+    padding: 16,
+    backgroundColor: '#1a1a2e',
+    borderRadius: 8,
+    margin: 16,
+  },
+  heroText: {
+    flex: 1,
+    justifyContent: 'center',
+    paddingRight: 16,
+  },
+  heroTitle: {
+    fontSize: 32,
+    color: '#fff',
+  },
+  heroHighlight: {
+    color: '#3a86ff',
+  },
+  heroDescription: {
+    color: '#fff',
+    marginVertical: 8,
+  },
+  heroButtons: {
+    flexDirection: 'row',
+  },
+  shopButton: {
+    backgroundColor: '#3a86ff',
+    padding: 10,
+    borderRadius: 5,
+    marginRight: 8,
+  },
+  exploreButton: {
+    borderColor: '#fff',
+    borderWidth: 1,
+    padding: 10,
+    borderRadius: 5,
+  },
+  buttonText: {
+    color: '#fff',
+  },
+  heroImage: {
+    width: 150,
+    height: 150,
+    borderRadius: 8,
+  },
+  categories: {
+    padding: 16,
+    backgroundColor: '#fff',
+    borderRadius: 8,
+    margin: 16,
+  },
+  categoriesTitle: {
+    fontSize: 24,
+    textAlign: 'center',
+  },
+  categoryGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+  },
+  categoryItem: {
+    alignItems: 'center',
+    margin: 8,
+  },
+  categoryIcon: {
+    fontSize: 40,
+  },
+  categoryName: {
+    fontWeight: 'bold',
+  },
+  featuredProducts: {
+    padding: 16,
+    backgroundColor: '#f0f0f0',
+    borderRadius: 8,
+    margin: 16,
+  },
+  featuredTitle: {
+    fontSize: 24,
+    marginBottom: 16,
+  },
+  productGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+  },
+  productCard: {
+    width: '48%',
+    backgroundColor: '#fff',
+    borderRadius: 8,
+    marginBottom: 16,
+    elevation: 2,
+  },
+  productImage: {
+    width: '100%',
+    height: 150,
+    borderTopLeftRadius: 8,
+    borderTopRightRadius: 8,
+  },
+  saleBadge: {
+    position: 'absolute',
+    top: 10,
+    right: 10,
+    backgroundColor: '#e63946',
+    color: '#fff',
+    padding: 4,
+    borderRadius: 4,
+    fontSize: 12,
+    fontWeight: 'bold',
+  },
+  productTitle: {
+    fontWeight: 'bold',
+    margin: 8,
+  },
+  productDescription: {
+    color: '#666',
+    marginHorizontal: 8,
+  },
+  productFooter: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: 8,
+  },
+  productPrice: {
+    color: '#3a86ff',
+    fontWeight: 'bold',
+  },
+  oldPrice: {
+    textDecorationLine: 'line-through',
+    color: '#999',
+  },
+  rating: {
+    flexDirection: 'row',
+  },
+  star: {
+    color: '#FFD700',
+  },
+  saleBanner: {
+    padding: 16,
+    backgroundColor: '#3a86ff',
+    borderRadius: 8,
+    margin: 16,
+    alignItems: 'center',
+  },
+  saleTitle: {
+    fontSize: 24,
+    color: '#fff',
+  },
+  saleHighlight: {
+    color: '#FFD700',
+  },
+  saleDescription: {
+    color: '#fff',
+    marginTop: 8,
+  },
+});
