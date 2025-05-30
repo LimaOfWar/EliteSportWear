@@ -1,7 +1,14 @@
-import React from 'react';
-import { StyleSheet, View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, View, Text, Image, TouchableOpacity, ScrollView, TextInput } from 'react-native';
 
-export default function App() {
+const App: React.FC = () => {
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearch = () => {
+    // Aqui você pode implementar a lógica de busca
+    console.log('Searching for:', searchQuery);
+  };
+
   return (
     <ScrollView style={styles.container}>
       {/* Navigation */}
@@ -14,6 +21,17 @@ export default function App() {
             </TouchableOpacity>
           ))}
         </View>
+      </View>
+
+      {/* Search Bar */}
+      <View style={styles.searchContainer}>
+        <TextInput
+          style={styles.searchInput}
+          placeholder="Buscar produtos..."
+          value={searchQuery}
+          onChangeText={setSearchQuery}
+          onSubmitEditing={handleSearch}
+        />
       </View>
 
       {/* Hero Section */}
@@ -101,8 +119,8 @@ export default function App() {
   );
 }
 
-const getSportIcon = (sport) => {
-  const icons = {
+const getSportIcon = (sport: string): string => {
+  const icons: { [key: string]: string } = {
     Basketball: '🏀',
     Football: '🏈',
     Soccer: '⚽',
@@ -114,7 +132,17 @@ const getSportIcon = (sport) => {
   return icons[sport] || '⚽';
 };
 
-const ProductCard = ({ imageUri, title, description, price, oldPrice, rating, saleBadge }) => (
+interface ProductCardProps {
+  imageUri: string;
+  title: string;
+  description: string;
+  price: string;
+  oldPrice?: string;
+  rating: number;
+  saleBadge?: string;
+}
+
+const ProductCard: React.FC<ProductCardProps> = ({ imageUri, title, description, price, oldPrice, rating, saleBadge }) => (
   <View style={styles.productCard}>
     <Image source={{ uri: imageUri }} style={styles.productImage} />
     {saleBadge && <Text style={styles.saleBadge}>{saleBadge}</Text>}
@@ -148,6 +176,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 24,
+    fontFamily: 'Arial',
     fontWeight: 'bold',
   },
   highlight: {
@@ -160,6 +189,20 @@ const styles = StyleSheet.create({
   navLink: {
     marginHorizontal: 10,
     color: '#3a86ff',
+  },
+  searchContainer: {
+    padding: 16,
+    backgroundColor: '#fff',
+    borderRadius: 8,
+    margin: 16,
+    elevation: 2,
+  },
+  searchInput: {
+    height: 40,
+    borderColor: '#ccc',
+    borderWidth: 1,
+    borderRadius: 8,
+    paddingHorizontal: 10,
   },
   hero: {
     flexDirection: 'row',
@@ -216,6 +259,7 @@ const styles = StyleSheet.create({
   categoriesTitle: {
     fontSize: 24,
     textAlign: 'center',
+    fontFamily: 'Arial',
   },
   categoryGrid: {
     flexDirection: 'row',
@@ -241,6 +285,7 @@ const styles = StyleSheet.create({
   featuredTitle: {
     fontSize: 24,
     marginBottom: 16,
+    fontFamily: 'Arial',
   },
   productGrid: {
     flexDirection: 'row',
@@ -274,6 +319,7 @@ const styles = StyleSheet.create({
   productTitle: {
     fontWeight: 'bold',
     margin: 8,
+    fontFamily: 'Arial',
   },
   productDescription: {
     color: '#666',
@@ -309,6 +355,7 @@ const styles = StyleSheet.create({
   saleTitle: {
     fontSize: 24,
     color: '#fff',
+    fontFamily: 'Arial',
   },
   saleHighlight: {
     color: '#FFD700',
@@ -318,3 +365,5 @@ const styles = StyleSheet.create({
     marginTop: 8,
   },
 });
+
+export default App;
