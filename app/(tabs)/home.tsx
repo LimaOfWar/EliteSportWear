@@ -15,7 +15,7 @@ const App: React.FC = () => {
       <View style={styles.nav}>
         <Text style={styles.title}>ELITE <Text style={styles.highlight}>SPORTWEAR</Text></Text>
         <View style={styles.navLinks}>
-          {['Home', 'Products', 'Brands', 'Sale', 'About'].map((link) => (
+          {['Página Principal', 'Produtos', 'Marcas', 'Promoções', 'Sobre'].map((link) => (
             <TouchableOpacity key={link}>
               <Text style={styles.navLink}>{link}</Text>
             </TouchableOpacity>
@@ -37,8 +37,8 @@ const App: React.FC = () => {
       {/* Hero Section */}
       <View style={styles.hero}>
         <View style={styles.heroText}>
-          <Text style={styles.heroTitle}>ELITE PERFORMANCE <Text style={styles.heroHighlight}>GEAR</Text></Text>
-          <Text style={styles.heroDescription}>Direct from manufacturers to your doorstep. Premium quality at wholesale prices.</Text>
+          <Text style={styles.heroTitle}>ELITE PERFORMANCE <Text style={styles.heroHighlight}></Text></Text>
+          <Text style={styles.heroDescription}>Direto dos fabricantes, direto na sua porta. Qualidade premium a preços de atacado..</Text>
           <View style={styles.heroButtons}>
             <TouchableOpacity style={styles.shopButton}>
               <Text style={styles.buttonText}>Shop Now</Text>
@@ -56,9 +56,9 @@ const App: React.FC = () => {
 
       {/* Sports Categories */}
       <View style={styles.categories}>
-        <Text style={styles.categoriesTitle}>SHOP BY <Text style={styles.highlight}>SPORT</Text></Text>
+        <Text style={styles.categoriesTitle}>COMPRAR POR <Text style={styles.highlight}>ESPORTE</Text></Text>
         <View style={styles.categoryGrid}>
-          {['Basketball', 'Football', 'Soccer', 'F1 Racing', 'Hockey', 'Volleyball', 'Training'].map((sport) => (
+          {['Basquete', 'Futebol', 'Futebol Americano', 'Fórmula 1', 'Hockey', 'Vólei', 'Treinamentos'].map((sport) => (
             <View key={sport} style={styles.categoryItem}>
               <Text style={styles.categoryIcon}>{getSportIcon(sport)}</Text>
               <Text style={styles.categoryName}>{sport}</Text>
@@ -69,13 +69,13 @@ const App: React.FC = () => {
 
       {/* Featured Products */}
       <View style={styles.featuredProducts}>
-        <Text style={styles.featuredTitle}>FEATURED <Text style={styles.highlight}>PRODUCTS</Text></Text>
+        <Text style={styles.featuredTitle}>PRODUTOS EM <Text style={styles.highlight}>DESTAQUE</Text></Text>
         <View style={styles.productGrid}>
           {/* Product 1 */}
           <ProductCard
-            imageUri="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-            title="Elite Basketball Jersey"
-            description="Official NBA Style"
+            imageUri=""
+            title="Lakers Jersey"
+            description="Product Oficcial NBA"
             price="$59.99"
             oldPrice="$79.99"
             rating={4.5}
@@ -84,7 +84,7 @@ const App: React.FC = () => {
           {/* Product 2 */}
           <ProductCard
             imageUri="https://images.unsplash.com/photo-1521193089946-7aa29d1fe776?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-            title="Pro Football Jersey"
+            title="Philadelphia Eagles Jersey"
             description="NFL Team Edition"
             price="$64.99"
             rating={4}
@@ -92,8 +92,8 @@ const App: React.FC = () => {
           {/* Product 3 */}
           <ProductCard
             imageUri="https://images.unsplash.com/photo-1574629810360-7efbbe195018?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-            title="Champion Soccer Kit"
-            description="World Cup Edition"
+            title="Real Madrid Jersey Home"
+            description="Champions Edition"
             price="$49.99"
             oldPrice="$69.99"
             rating={5}
@@ -102,7 +102,7 @@ const App: React.FC = () => {
           {/* Product 4 */}
           <ProductCard
             imageUri="https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-            title="Pro Hockey Jersey"
+            title="Florida Panthers Jersey"
             description="NHL Authentic"
             price="$69.99"
             rating={4.5}
@@ -113,7 +113,7 @@ const App: React.FC = () => {
       {/* Sale Banner */}
       <View style={styles.saleBanner}>
         <Text style={styles.saleTitle}>SUMMER <Text style={styles.saleHighlight}>SALE</Text></Text>
-        <Text style={styles.saleDescription}>Up to 50% off on selected items. Limited time only!</Text>
+        <Text style={styles.saleDescription}>Até 50% de desconto em itens selecionados. Por tempo limitado!</Text>
       </View>
     </ScrollView>
   );
