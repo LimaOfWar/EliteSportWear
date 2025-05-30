@@ -165,7 +165,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ imageUri, title, description,
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f8f9fa',
+    backgroundColor: '#f0f9fa',
   },
   nav: {
     flexDirection: 'row',
