@@ -41,10 +41,10 @@ const App: React.FC = () => {
           <Text style={styles.heroDescription}>Direto dos fabricantes, direto na sua porta. Qualidade premium a preços de atacado..</Text>
           <View style={styles.heroButtons}>
             <TouchableOpacity style={styles.shopButton}>
-              <Text style={styles.buttonText}>Shop Now</Text>
+              <Text style={styles.buttonText}>Comprar agora</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.exploreButton}>
-              <Text style={styles.buttonText}>Explore</Text>
+              <Text style={styles.buttonText}>Explorar</Text>
             </TouchableOpacity>
           </View>
         </View>
