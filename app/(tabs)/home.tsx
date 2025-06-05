@@ -13,9 +13,9 @@ const App: React.FC = () => {
     <ScrollView style={styles.container}>
       {/* Navigation */}
       <View style={styles.nav}>
-        <Text style={styles.title}>ELITE <Text style={styles.highlight}>SPORTWEAR</Text></Text>
+       
         <View style={styles.navLinks}>
-          {['Página Principal', 'Produtos', 'Marcas', 'Promoções', 'Sobre'].map((link) => (
+          {['Inicio', 'Produtos', 'Marcas', 'Promoções', 'Sobre'].map((link) => (
             <TouchableOpacity key={link}>
               <Text style={styles.navLink}>{link}</Text>
             </TouchableOpacity>

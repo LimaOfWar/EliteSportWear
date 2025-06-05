@@ -6,17 +6,10 @@ import { MaterialIcons } from '@expo/vector-icons';
 const SettingsScreen: React.FC = () => {
   return (
     <ScrollView style={styles.container}>
-      {/* Header */}
-      <Animatable.View style={styles.header} animation="fadeInDown" duration={500}>
-        <Text style={styles.headerTitle}>ELITE SPORTWEAR</Text>
-      </Animatable.View>
-
+   
       {/* Main Content */}
       <View style={styles.content}>
-        <Animatable.Text style={styles.sectionTitle} animation="bounceIn" duration={500}>
-          <MaterialIcons name="settings" size={20} color="#000" /> Configurações da Conta
-        </Animatable.Text>
-
+        
         {/* Profile Section */}
         <Animatable.View style={styles.profileCard} animation="fadeIn" duration={500}>
           <Text style={styles.profileName}>Carlos Silva</Text>
