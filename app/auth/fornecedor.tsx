@@ -11,7 +11,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 
 import { useRouter } from "expo-router";
 
-const Fornecedor = () => {
+const Comprador = () => {
   const router = useRouter();
 
   const [name, setName] = useState("");
@@ -38,7 +38,7 @@ const Fornecedor = () => {
       body: JSON.stringify({
         name,
         email,
-        type: "fornecedor",
+        type: "driver",
         tel,
         password,
         marca,
@@ -79,7 +79,7 @@ const Fornecedor = () => {
             fontSize: 22,
           }}
         >
-          Cadastre-se como FORNECEDOR:
+           Cadastre-se como fornecedor:
         </Text>
       </View>
       <ScrollView>
@@ -90,7 +90,7 @@ const Fornecedor = () => {
             paddingVertical: 18,
           }}
         >
-          Vamos realizar o seu cadrastro, só precisamos de algumas informações
+          Vamos realizar o seu cadastro, só precisamos de algumas informações.
         </Text>
         <View style={{ paddingHorizontal: 25 }}>
           <Text
@@ -102,7 +102,7 @@ const Fornecedor = () => {
           >
             Informações Pessoais
           </Text>
-          <Text style={{ fontSize: 18 }}>Nome Completo</Text>
+          <Text style={{ fontSize: 18 }}>Nome</Text>
           <TextInput
             onChangeText={(txt) => setName(txt)}
             value={name}
@@ -130,7 +130,7 @@ const Fornecedor = () => {
               padding: 8,
             }}
           />
-          <Text style={{ fontSize: 18 }}>Telefone/Whatsapp</Text>
+          <Text style={{ fontSize: 18 }}>Telefone</Text>
           <TextInput
             onChangeText={(txt) => setTel(txt)}
             value={tel}
@@ -165,71 +165,6 @@ const Fornecedor = () => {
             paddingVertical: 18,
           }}
         >
-          <Text
-            style={{
-              fontSize: 22,
-              fontWeight: "bold",
-              marginBottom: 16,
-            }}
-          >
-            Informações do Veículo
-          </Text>
-          <Text style={{ fontSize: 18 }}>Marca</Text>
-          <TextInput
-            onChangeText={(txt) => setMarca(txt)}
-            value={marca}
-            style={{
-              backgroundColor: "#FDFDFD",
-              borderWidth: 1,
-              borderColor: "#C0C0C0",
-              borderRadius: 8,
-              height: 42,
-              marginBottom: 16,
-              padding: 8,
-            }}
-          />
-          <Text style={{ fontSize: 18 }}>Modelo</Text>
-          <TextInput
-            onChangeText={(txt) => setModelo(txt)}
-            value={modelo}
-            style={{
-              backgroundColor: "#FDFDFD",
-              borderWidth: 1,
-              borderColor: "#C0C0C0",
-              borderRadius: 8,
-              height: 42,
-              marginBottom: 16,
-              padding: 8,
-            }}
-          />
-          <Text style={{ fontSize: 18 }}>Ano</Text>
-          <TextInput
-            onChangeText={(txt) => setAno(txt)}
-            value={ano}
-            style={{
-              backgroundColor: "#FDFDFD",
-              borderWidth: 1,
-              borderColor: "#C0C0C0",
-              borderRadius: 8,
-              height: 42,
-              marginBottom: 16,
-              padding: 8,
-            }}
-          />
-          <Text style={{ fontSize: 18 }}>Placa</Text>
-          <TextInput
-            onChangeText={(txt) => setPlaca(txt)}
-            value={placa}
-            style={{
-              backgroundColor: "#FDFDFD",
-              borderWidth: 1,
-              borderColor: "#C0C0C0",
-              borderRadius: 8,
-              height: 42,
-              marginBottom: 16,
-              padding: 8,
-            }}
-          />
         </View>
       </ScrollView>
       <View
@@ -258,4 +193,4 @@ const Fornecedor = () => {
   );
 };
 
-export default Fornecedor;
+export default Comprador;

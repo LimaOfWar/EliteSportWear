@@ -1,141 +1,196 @@
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-
-const Comprador: React.FC = () => {
-    const history = useHistory();
-    
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [birthdate, setBirthdate] = useState('');
-    const [newsletter, setNewsletter] = useState(false);
-
-    const register = () => {
-        // Simple validation
-        if (!email || !password || password !== confirmPassword) {
-            alert('Por favor, preencha todos os campos obrigatórios e verifique se as senhas coincidem.');
-            return;
-        }
-
-        // Here you would typically send the data to your backend
-        // For this example, we'll just redirect to login page
-        history.push('/login');
+import {
+    View,
+    Text,
+    TextInput,
+    ScrollView,
+    Pressable,
+    Alert,
+  } from "react-native";
+  import React, { useState } from "react";
+  import { MaterialIcons } from "@expo/vector-icons";
+  
+  import { useRouter } from "expo-router";
+  
+  const Comprador = () => {
+    const router = useRouter();
+  
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [tel, setTel] = useState("");
+    const [marca, setMarca] = useState("");
+    const [modelo, setModelo] = useState("");
+    const [ano, setAno] = useState("");
+    const [placa, setPlaca] = useState("");
+  
+    const handleSaveUserDriver = async () => {
+      console.log(marca);
+      console.log(modelo);
+      console.log(ano);
+      console.log(placa);
+  
+      const response = await fetch("http://localhost:8000/api/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+  
+        body: JSON.stringify({
+          name,
+          email,
+          type: "driver",
+          tel,
+          password,
+          marca,
+          modelo,
+          ano,
+          placa,
+        }),
+      });
+      const data = await response.json();
+      console.log(data);
+      if (response.ok) {
+        Alert.alert("Cadastro realizado com sucesso!");
+        router.push("/(tabs)/home");
+      } else {
+        Alert.alert("Erro ao cadastrar motorista:", data);
+      }
     };
-
+  
     return (
-        <div className="bg-gray-50 min-h-screen flex flex-col">
-            {/* Header */}
-            <header className="bg-black text-white h-24 flex items-center px-4">
-                <button onClick={() => history.push('/login')} className="flex items-center">
-                    <span className="material-icons text-white text-2xl">arrow_back</span>
-                    <span className="ml-4 text-xl font-medium">Cadastre-se</span>
-                </button>
-            </header>
-
-            {/* Main Content */}
-            <main className="flex-grow flex items-center justify-center px-6 py-8">
-                <div className="form-container w-full">
-                    <h1 className="text-3xl text-center mb-8 font-bold">TORNE-SE UM MEMBRO NIKE</h1>
-                    
-                    <div className="mb-8">
-                        <h2 className="text-xl font-bold text-center mb-6">DADOS CADASTRAIS</h2>
-                        
-                        <form id="registerForm">
-                            <div className="mb-6">
-                                <label htmlFor="email" className="block text-sm font-medium mb-2">Endereço de e-mail *</label>
-                                <input 
-                                    type="email" 
-                                    id="email" 
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    className="nike-input w-full p-3 border border-gray-300 rounded-lg focus:border-black"
-                                />
-                            </div>
-                            
-                            <div className="mb-6">
-                                <label htmlFor="password" className="block text-sm font-medium mb-2">Senha *</label>
-                                <input 
-                                    type="password" 
-                                    id="password" 
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                    className="nike-input w-full p-3 border border-gray-300 rounded-lg focus:border-black"
-                                />
-                                <p className="text-xs text-gray-500 mt-2">Use pelo menos 8 caracteres e uma combinação de letras e números</p>
-                            </div>
-                            
-                            <div className="mb-6">
-                                <label htmlFor="confirmPassword" className="block text-sm font-medium mb-2">Confirmar Senha *</label>
-                                <input 
-                                    type="password" 
-                                    id="confirmPassword" 
-                                    value={confirmPassword}
-                                    onChange={(e) => setConfirmPassword(e.target.value)}
-                                    className="nike-input w-full p-3 border border-gray-300 rounded-lg focus:border-black"
-                                />
-                            </div>
-                            
-                            <div className="mb-6">
-                                <label htmlFor="firstName" className="block text-sm font-medium mb-2">Primeiro Nome *</label>
-                                <input 
-                                    type="text" 
-                                    id="firstName" 
-                                    value={firstName}
-                                    onChange={(e) => setFirstName(e.target.value)}
-                                    className="nike-input w-full p-3 border border-gray-300 rounded-lg focus:border-black"
-                                />
-                            </div>
-                            
-                            <div className="mb-6">
-                                <label htmlFor="lastName" className="block text-sm font-medium mb-2">Sobrenome *</label>
-                                <input 
-                                    type="text" 
-                                    id="lastName" 
-                                    value={lastName}
-                                    onChange={(e) => setLastName(e.target.value)}
-                                    className="nike-input w-full p-3 border border-gray-300 rounded-lg focus:border-black"
-                                />
-                            </div>
-                            
-                            <div className="mb-6">
-                                <label htmlFor="birthdate" className="block text-sm font-medium mb-2">Data de Nascimento *</label>
-                                <input 
-                                    type="date" 
-                                    id="birthdate" 
-                                    value={birthdate}
-                                    onChange={(e) => setBirthdate(e.target.value)}
-                                    className="nike-input w-full p-3 border border-gray-300 rounded-lg focus:border-black"
-                                />
-                            </div>
-                            
-                            <div className="flex items-center mb-8">
-                                <input 
-                                    type="checkbox" 
-                                    id="newsletter" 
-                                    checked={newsletter}
-                                    onChange={() => setNewsletter(!newsletter)}
-                                    className="mr-3 w-5 h-5"
-                                />
-                                <label htmlFor="newsletter" className="text-sm">Quero me inscrever para receber e-mails exclusivos da Nike, com ofertas de produtos, inspirações e muito mais.</label>
-                            </div>
-                            
-                            <p className="text-xs text-gray-500 mb-6">Ao criar sua conta, você concorda com os <a href="#" className="underline">Termos de Uso</a> e <a href="#" className="underline">Política de Privacidade</a> da Nike, incluindo o <a href="#" className="underline">Uso de Cookies</a>.</p>
-                        </form>
-                    </div>
-                </div>
-            </main>
-
-            {/* Footer */}
-            <footer className="bg-black text-white py-6 px-4">
-                <button onClick={register} className="w-full bg-black text-white py-4 rounded-lg text-center text-xl font-bold">
-                    CADASTRAR
-                </button>
-            </footer>
-        </div>
+      <>
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "flex-start",
+            alignItems: "center",
+            backgroundColor: "#000",
+            height: 86,
+            paddingLeft: 16,
+          }}
+        >
+          <Pressable onPress={() => router.back()}>
+            <MaterialIcons name="arrow-back" color="#fff" size={24} />
+          </Pressable>
+          <Text
+            style={{
+              marginLeft: 16,
+              color: "#FFF",
+              fontSize: 22,
+            }}
+          >
+             Cadastre-se como comprador:
+          </Text>
+        </View>
+        <ScrollView>
+          <Text
+            style={{
+              fontSize: 24,
+              paddingHorizontal: 25,
+              paddingVertical: 18,
+            }}
+          >
+            Vamos realizar o seu cadastro, só precisamos de algumas informações.
+          </Text>
+          <View style={{ paddingHorizontal: 25 }}>
+            <Text
+              style={{
+                fontSize: 22,
+                fontWeight: "bold",
+                marginBottom: 16,
+              }}
+            >
+              Informações Pessoais
+            </Text>
+            <Text style={{ fontSize: 18 }}>Nome</Text>
+            <TextInput
+              onChangeText={(txt) => setName(txt)}
+              value={name}
+              style={{
+                backgroundColor: "#FDFDFD",
+                borderWidth: 1,
+                borderColor: "#C0C0C0",
+                borderRadius: 8,
+                height: 42,
+                marginBottom: 16,
+                padding: 8,
+              }}
+            />
+            <Text style={{ fontSize: 18 }}>Email</Text>
+            <TextInput
+              onChangeText={(txt) => setEmail(txt)}
+              value={email}
+              style={{
+                backgroundColor: "#FDFDFD",
+                borderWidth: 1,
+                borderColor: "#C0C0C0",
+                borderRadius: 8,
+                height: 42,
+                marginBottom: 16,
+                padding: 8,
+              }}
+            />
+            <Text style={{ fontSize: 18 }}>Telefone</Text>
+            <TextInput
+              onChangeText={(txt) => setTel(txt)}
+              value={tel}
+              style={{
+                backgroundColor: "#FDFDFD",
+                borderWidth: 1,
+                borderColor: "#C0C0C0",
+                borderRadius: 8,
+                height: 42,
+                marginBottom: 16,
+                padding: 8,
+              }}
+            />
+            <Text style={{ fontSize: 18 }}>Senha</Text>
+            <TextInput
+              onChangeText={(txt) => setPassword(txt)}
+              value={password}
+              style={{
+                backgroundColor: "#FDFDFD",
+                borderWidth: 1,
+                borderColor: "#C0C0C0",
+                borderRadius: 8,
+                height: 42,
+                marginBottom: 16,
+                padding: 8,
+              }}
+            />
+          </View>
+          <View
+            style={{
+              paddingHorizontal: 25,
+              paddingVertical: 18,
+            }}
+          >
+          </View>
+        </ScrollView>
+        <View
+          style={{
+            backgroundColor: "#000",
+            height: 86,
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Pressable
+            // onPress={() => router.push('/(tabs)/home')}
+            onPress={handleSaveUserDriver}
+          >
+            <Text
+              style={{
+                color: "#FFF",
+                fontSize: 22,
+              }}
+            >
+              Cadastrar
+            </Text>
+          </Pressable>
+        </View>
+      </>
     );
-};
-
-export default Comprador;
-;
+  };
+  
+  export default Comprador;

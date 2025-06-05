@@ -18,7 +18,7 @@ export default function Layout() {
                 name="home"
                 options={{
                     title: '',
-                    headerTitle: 'Home',
+                    headerTitle: '',
                     headerTitleStyle: {
                         color: '#fff'
                     },
