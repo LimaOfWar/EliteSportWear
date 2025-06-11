@@ -33,24 +33,24 @@ export default function Layout(): JSX.Element {
             />
 
             <Tabs.Screen
-                name="travels"
+                name="carrinho"
                 options={{
                     title: '',
-                    headerTitle: 'MEUS FAVORITOS',
+                    headerTitle: 'CARRINHO DE COMPRAS',
                     headerTitleStyle: {
                         color: '#fff',
                     },
                     tabBarIcon: ({ color }: { color: string }) => (
-                        <FontAwesome size={28} name="heart" color={color} />
+                        <FontAwesome size={28} name="shopping-cart" color={color} />
                     ),
                 }}
             />
 
             <Tabs.Screen
-                name="settings"
+                name="config"
                 options={{
                     title: '',
-                    headerTitle: 'CONFIGURAÇÕES',
+                    headerTitle: 'CONFIGURAÇÕES DE USUÁRIO',
                     headerTitleStyle: {
                         color: '#fff',
                     },

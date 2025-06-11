@@ -13,9 +13,8 @@ const App: React.FC = () => {
     <ScrollView style={styles.container}>
       {/* Navigation */}
       <View style={styles.nav}>
-       
         <View style={styles.navLinks}>
-          {['Inicio', 'Produtos', 'Marcas', 'Promoções', 'Sobre'].map((link) => (
+          {['Produtos', 'Marcas', 'Promoções', 'Sobre'].map((link) => (
             <TouchableOpacity key={link}>
               <Text style={styles.navLink}>{link}</Text>
             </TouchableOpacity>
@@ -44,21 +43,18 @@ const App: React.FC = () => {
               <Text style={styles.buttonText}>Comprar agora</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.exploreButton}>
-              <Text style={styles.buttonText}>Explorar</Text>
+              <Text style={styles.buttonText}>Explorarm</Text>
             </TouchableOpacity>
           </View>
         </View>
-        <Image
-          source={{ uri: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80' }}
-          style={styles.heroImage}
-        />
+
       </View>
 
       {/* Sports Categories */}
       <View style={styles.categories}>
-        <Text style={styles.categoriesTitle}>COMPRAR POR <Text style={styles.highlight}>ESPORTE</Text></Text>
+        <Text style={styles.categoriesTitle}>COMPRAR POR ESPORTE:<Text style={styles.highlight}></Text></Text>
         <View style={styles.categoryGrid}>
-          {['Basquete', 'Futebol', 'Vólei', 'Treinamentos'].map((sport) => (
+          {['Basquete', 'Futebol', 'Hoquei', 'Vólei', 'Outros...'].map((sport) => (
             <View key={sport} style={styles.categoryItem}>
               <Text style={styles.categoryIcon}>{getSportIcon(sport)}</Text>
               <Text style={styles.categoryName}>{sport}</Text>
@@ -69,44 +65,130 @@ const App: React.FC = () => {
 
       {/* Featured Products */}
       <View style={styles.featuredProducts}>
-        <Text style={styles.featuredTitle}>PRODUTOS EM <Text style={styles.highlight}>DESTAQUE</Text></Text>
+        <Text style={styles.featuredTitle}>PRODUTOS EM DESTAQUE</Text>
         <View style={styles.productGrid}>
           {/* Product 1 */}
-          <ProductCard
-            imageUri=""
-            title="Lakers Jersey"
-            description="Product Oficial NBA"
-            price="$59.99"
-            oldPrice="$79.99"
-            rating={4.5}
-            saleBadge="SALE"
-          />
-          {/* Product 2 */}
-          <ProductCard
-            imageUri="https://images.unsplash.com/photo-1521193089946-7aa29d1fe776?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-            title="Philadelphia Eagles Jersey"
-            description="NFL Team Edition"
-            price="$64.99"
-            rating={4}
-          />
-          {/* Product 3 */}
-          <ProductCard
-            imageUri="https://images.unsplash.com/photo-1574629810360-7efbbe195018?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-            title="Real Madrid Jersey Home"
-            description="Champions Edition"
-            price="$49.99"
-            oldPrice="$69.99"
-            rating={5}
-            saleBadge="-30%"
-          />
-          {/* Product 4 */}
-          <ProductCard
-            imageUri="https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-            title="Florida Panthers Jersey"
-            description="NHL Authentic"
-            price="$69.99"
-            rating={4.5}
-          />
+          <View style={{ marginBottom: 30 }}>
+  <Image
+    source={{ uri: 'https://encurtador.com.br/UK1Ld' }}
+    style={{ width: '100%', height: 300, borderRadius: 10 }}
+    resizeMode="cover"
+  />
+  
+  <Text style={{ fontSize: 18, fontWeight: 'bold', marginTop: 10 }}>
+    Regata Nike Lakers III 2024/25
+  </Text>
+  <Text style={{ fontSize: 14, color: '#666' }}>
+    Camisa Tailandesa 1.1 - NBA
+  </Text>
+  <Text style={{ fontSize: 16, color: 'green', marginTop: 5 }}>
+    R$59.99
+  </Text>
+  <Text style={{ fontSize: 14, color: 'gray', textDecorationLine: 'line-through' }}>
+    R$79.99
+  </Text>
+  <Text style={{ fontSize: 14, color: 'red', marginTop: 5 }}>
+    SALE
+  </Text>
+  <Text style={{ fontSize: 14 }}>⭐ 5</Text>
+
+</View>
+<View style={{ marginBottom: 30 }}>
+  <Image
+    source={{ uri: 'https://encurtador.com.br/6DpA0' }}
+    style={{ width: '100%', height: 300, borderRadius: 10 }}
+    resizeMode="cover"
+  />
+  <Text style={{ fontSize: 18, fontWeight: 'bold', marginTop: 10 }}>
+  Camisa Nike Philadelphia Eagles 2024/25
+  </Text>
+  <Text style={{ fontSize: 14, color: '#666' }}>
+  Camisa Tailandesa 1.1 - Edição NFL
+  </Text>
+  <Text style={{ fontSize: 16, color: 'green', marginTop: 5 }}>
+    R$180,50
+  </Text>
+  <Text style={{ fontSize: 14, color: 'gray', textDecorationLine: 'line-through' }}>
+    R$260,50
+  </Text>
+  <Text style={{ fontSize: 14, color: 'red', marginTop: 5 }}>
+    SALE
+  </Text>
+  <Text style={{ fontSize: 14 }}>⭐ 5</Text>
+  
+  </View>
+<View style={{ marginBottom: 30 }}>
+  <Image
+    source={{ uri: 'https://shre.ink/eTds' }}
+    style={{ width: '100%', height: 300, borderRadius: 10 }}
+    resizeMode="cover"
+  />
+  <Text style={{ fontSize: 18, fontWeight: 'bold', marginTop: 10 }}>
+  Camisa Nike Brasil I 2024/25
+  </Text>
+  <Text style={{ fontSize: 14, color: '#666' }}>
+  Camisa Tailandesa 1.1 - Modelo Torcedor
+  </Text>
+  <Text style={{ fontSize: 16, color: 'green', marginTop: 5 }}>
+    R$180,50
+  </Text>
+  <Text style={{ fontSize: 14, color: 'gray', textDecorationLine: 'line-through' }}>
+    R$260,50
+  </Text>
+  <Text style={{ fontSize: 14, color: 'red', marginTop: 5 }}>
+    SALE
+  </Text>
+  <Text style={{ fontSize: 14 }}>⭐ 5</Text>
+
+  </View>
+<View style={{ marginBottom: 30 }}>
+  <Image
+    source={{ uri: 'https://shre.ink/eT1l' }}
+    style={{ width: '100%', height: 300, borderRadius: 10 }}
+    resizeMode="cover"
+  />
+  <Text style={{ fontSize: 18, fontWeight: 'bold', marginTop: 10 }}>
+  Camisa Ceará SC I 2023/24
+  </Text>
+  <Text style={{ fontSize: 14, color: '#666' }}>
+  Camisa Tailandesa 1.1 - Modelo Torcedor
+  </Text>
+  <Text style={{ fontSize: 16, color: 'green', marginTop: 5 }}>
+    R$180,50
+  </Text>
+  <Text style={{ fontSize: 14, color: 'gray', textDecorationLine: 'line-through' }}>
+    R$260,50
+  </Text>
+  <Text style={{ fontSize: 14, color: 'red', marginTop: 5 }}>
+    SALE
+  </Text>
+  <Text style={{ fontSize: 14 }}>⭐ 5</Text>
+
+  </View>
+<View style={{ marginBottom: 30 }}>
+  <Image
+    source={{ uri: 'https://shre.ink/eT5L' }}
+    style={{ width: '100%', height: 300, borderRadius: 10 }}
+    resizeMode="cover"
+  />
+  <Text style={{ fontSize: 18, fontWeight: 'bold', marginTop: 10 }}>
+  Camisa Nike Boston Celtics 2024/25
+  </Text>
+  <Text style={{ fontSize: 14, color: '#666' }}>
+  Camisa Tailandesa 1.1 - Edição NBA
+  </Text>
+  <Text style={{ fontSize: 16, color: 'green', marginTop: 5 }}>
+    R$180,50
+  </Text>
+  <Text style={{ fontSize: 14, color: 'gray', textDecorationLine: 'line-through' }}>
+    R$260,50
+  </Text>
+  <Text style={{ fontSize: 14, color: 'red', marginTop: 5 }}>
+    SALE
+  </Text>
+  <Text style={{ fontSize: 14 }}>⭐ 5</Text>
+  
+</View>
         </View>
       </View>
 
@@ -123,8 +205,7 @@ const getSportIcon = (sport: string): string => {
   const icons: { [key: string]: string } = {
     Basquete: '🏀',
     Futebol: '⚽',
-    Vólei: '🏐',
-    Treinamentos: '👕',
+    Hóquei: '🏒'
   };
   return icons[sport] || '⚽';
 };

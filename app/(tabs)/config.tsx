@@ -14,7 +14,7 @@ const SettingsScreen: React.FC = () => {
         <Animatable.View style={styles.profileCard} animation="fadeIn" duration={500}>
           <Text style={styles.profileName}>Carlos Silva</Text>
           <Text style={styles.profileEmail}>carlos.silva@example.com</Text>
-          <Text style={styles.profileMemberSince}>Membro desde: Jan 2022</Text>
+          <Text style={styles.profileMemberSince}>Membro desde: Jan 2025</Text>
         </Animatable.View>
 
         {/* Personal Information Form */}
@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
       borderBottomColor: '#E5E5E5', // Linha separadora
     },
     headerTitle: {
-      color: '#000000', // Texto preto
+      color: '#fffff', // Texto preto
       fontSize: 24,
       fontWeight: 'bold',
       textAlign: 'center',
@@ -103,12 +103,12 @@ const styles = StyleSheet.create({
       fontSize: 20,
       fontWeight: 'bold',
       marginBottom: 16,
-      color: '#000000', // Texto preto
+      color: '#FFFFFF', // Texto preto
       flexDirection: 'row',
       alignItems: 'center',
     },
     profileCard: {
-      backgroundColor: '#F9F9F9', // Fundo cinza claro
+      backgroundColor: '#000000', // Fundo cinza claro
       padding: 16,
       borderRadius: 8,
       marginBottom: 16,
@@ -118,13 +118,13 @@ const styles = StyleSheet.create({
     profileName: {
       fontSize: 18,
       fontWeight: 'bold',
-      color: '#000000',
+      color: '#FFFFFF',
     },
     profileEmail: {
-      color: '#555555',
+      color: '#FFFFFF',
     },
     profileMemberSince: {
-      color: '#777777',
+      color: '#FFFFFF',
     },
     formCard: {
       backgroundColor: '#FFFFFF',
